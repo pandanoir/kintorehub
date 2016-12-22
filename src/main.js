@@ -2,6 +2,7 @@ var commits = JSON.parse(localStorage.getItem('commits') || '[]');
 riot.observable(commits);
 var lowerBoundCommits = function(commits, date) {
     var first = 0, last = commits.length, mid;
+    if (commits.length === 0) return 0;
     date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     while (last - first > 1) {
         mid = Math.floor((first + last) / 2);
@@ -18,6 +19,7 @@ var lowerBoundCommits = function(commits, date) {
 };
 var upperBoundCommits = function(commits, date) {
     var first = 0, last = commits.length, mid;
+    if (commits.length === 0) return 0;
     date = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
     while (last - first > 1) {
         mid = Math.floor((first + last) / 2);
