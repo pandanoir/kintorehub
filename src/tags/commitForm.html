@@ -1,0 +1,21 @@
+<commit-form>
+  title:<br>
+  <input type="text" ref="title"><br>
+  description:<br>
+  <textarea ref="desc"></textarea><br>
+  <button onclick={click}>commit</button>
+  <button onclick={clear}>clear</button>
+  <script>
+click() {
+  var today = new Date();
+  Util.commits.push({year: today.getFullYear(), month: today.getMonth(), date: today.getDate(), title: this.refs.title.value, description: this.refs.desc.value});
+  Util.commits.trigger('change');
+  localStorage.setItem('commits', JSON.stringify(Util.commits));
+}
+clear() {
+  Util.commits = [];
+  Util.commits.trigger('change');
+  localStorage.clear();
+}
+  </script>
+</commit-form>

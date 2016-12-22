@@ -1,0 +1,28 @@
+{
+  "name": "kintorehub",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "version": "npm run build && gulp && git add -A",
+    "postversion": "git push && git push --tags",
+    "pretest": "npm run build",
+    "test": "mocha -R spec",
+    "build": "rollup src/main.js -c -o dist/main.js --name Util",
+    "tag": "riot src/tags dist/tags --ext html",
+    "tagw": "riot -w src/tags dist/tags --ext html"
+  },
+  "keywords": [],
+  "author": "Naoto Ikuno <moon_in_france@yahoo.co.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "6.5.2",
+    "mocha": "3.2.0",
+    "riot": "3.0.5",
+    "rollup": "0.37.2"
+  }
+}

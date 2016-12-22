@@ -1,0 +1,11 @@
+<commit-list>
+  <ul>
+    <li each={commit in commits}>
+      <span>{commit.month + 1}/{commit.date}</span> <span>{commit.title}</span>
+    </li>
+  </ul>
+  <script>
+this.commits = Util.commits;
+this.commits.on('change', () => this.update())
+  </script>
+</commit-list>
